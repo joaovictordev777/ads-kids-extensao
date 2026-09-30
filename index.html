@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aventura Digital: Missão ADS!</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="game-container">
+        <div id="progress-container">
+            <div id="progress-bar"></div>
+        </div>
+        <!-- Tela Inicial -->
+        <section id="screen-start" class="screen active">
+            <div class="content">
+                <div class="icon">🚀</div>
+                <h1>Aventura Digital: Missão ADS!</h1>
+                <p>Olá, futuro(a) programador(a)! Você quer descobrir como os computadores funcionam e o que a gente faz no curso de ADS?</p>
+                <button class="btn-main" onclick="nextScreen('screen-mission1')">Começar Aventura! 🌟</button>
+            </div>
+        </section>
+
+        <!-- Missão 1: Algoritmos -->
+        <section id="screen-mission1" class="screen">
+            <div class="content">
+                <div class="level-badge">Missão 1: Algoritmos 📝</div>
+                <h2>A Receita do Robô</h2>
+                <p>Um <strong>Algoritmo</strong> é como uma receita de bolo: são passos que o computador segue. Ajude o robô a escovar os dentes colocando os passos na ordem certa!</p>
+
+                <div id="algo-game" class="game-box">
+                    <div class="draggable" draggable="true" data-order="3">✅ Escovar os dentes</div>
+                    <div class="draggable" draggable="true" data-order="1">🪥 Pegar a escova</div>
+                    <div class="draggable" draggable="true" data-order="2">🧴 Colocar a pasta</div>
+                </div>
+
+                <button class="btn-main" onclick="checkAlgo()">Verificar Sequência! 🤖</button>
+                <p id="algo-feedback" class="feedback"></p>
+            </div>
+        </section>
+
+        <!-- Missão 2: Programação -->
+        <section id="screen-mission2" class="screen">
+            <div class="content">
+                <div class="level-badge">Missão 2: Programação 💻</div>
+                <h2>O Comando Mágico</h2>
+                <p><strong>Programar</strong> é dar ordens para o computador usando linguagens especiais. Tente mudar a cor do nosso monstrinho usando "comandos"!</p>
+
+                <div class="monster-box">
+                    <div id="monster" class="monster">
+                        <div class="antenna"></div>
+                        <div class="eye left"></div>
+                        <div class="eye right"></div>
+                        <div class="mouth"></div>
+                        <div class="bolt tl"></div>
+                        <div class="bolt tr"></div>
+                        <div class="bolt bl"></div>
+                        <div class="bolt br"></div>
+                    </div>
+                </div>
+
+                <div class="code-controls">
+                    <button class="btn-code" onclick="changeMonsterColor('#FF69B4')">monster.color = "Rosa"</button>
+                    <button class="btn-code" onclick="changeMonsterColor('#00FF00')">monster.color = "Verde"</button>
+                    <button class="btn-code" onclick="changeMonsterColor('#FFD700')">monster.color = "Amarelo"</button>
+                </div>
+
+                <button class="btn-main" onclick="nextScreen('screen-mission3')">Próxima Missão! ➡️</button>
+            </div>
+        </section>
+
+        <!-- Missão 3: Bug Hunter -->
+        <section id="screen-mission3" class="screen">
+            <div class="content">
+                <div class="level-badge">Missão 3: Testes 🐞</div>
+                <h2>Caçador de Bugs</h2>
+                <p>Às vezes, o código tem erros chamados <strong>Bugs</strong>. O trabalho do desenvolvedor é encontrá-los e consertá-los. Clique em todos os bugs para limpar o código!</p>
+
+                <div id="bug-field" class="bug-field">
+                    <!-- Bugs will be spawned here by JS -->
+                </div>
+
+                <p>Bugs restantes: <span id="bug-count">5</span></p>
+                <button id="btn-finish" class="btn-main" style="display:none" onclick="nextScreen('screen-mission4')">Missão Cumprida! 🏆</button>
+            </div>
+        </section>
+
+        <!-- Missão 4: Banco de Dados -->
+        <section id="screen-mission4" class="screen">
+            <div class="content">
+                <div class="level-badge">Missão 4: Banco de Dados 🗄️</div>
+                <h2>Organizando a Bagunça</h2>
+                <p><strong>Software:</strong> Programas e Apps (não tocamos).<br><strong>Hardware:</strong> Peças físicas (podemos tocar)!</p>
+                <div id="db-game" class="db-container">
+                    <div class="category-boxes">
+                        <div class="category-box" id="cat-software" data-category="software">
+                            <strong style="color: #8A2BE2">💻 Software<br>(Na Tela)</strong>
+                            <div class="drop-zone"></div>
+                        </div>
+                        <div class="category-box" id="cat-hardware" data-category="hardware">
+                            <strong style="color: #00CED1">🔌 Hardware<br>(Eu Toco)</strong>
+                            <div class="drop-zone"></div>
+                        </div>
+                    </div>
+                    <div id="db-items" class="items-pool">
+                        <div class="db-item" draggable="true" data-type="software">💬 WhatsApp</div>
+                        <div class="db-item" draggable="true" data-type="hardware">🖱️ Mouse</div>
+                        <div class="db-item" draggable="true" data-type="software">🌐 Chrome</div>
+                        <div class="db-item" draggable="true" data-type="hardware">⌨️ Teclado</div>
+                        <div class="db-item" draggable="true" data-type="software">📺 YouTube</div>
+                        <div class="db-item" draggable="true" data-type="hardware">🎧 Fone</div>
+                    </div>
+                </div>
+                <button class="btn-main" onclick="checkDatabase()">Verificar Organização! 🗄️</button>
+                <p id="db-feedback" class="feedback"></p>
+            </div>
+        </section>
+
+        <!-- Tela Final -->
+        <section id="screen-finish" class="screen">
+            <div class="content">
+                <div class="icon">🎓</div>
+                <h1>Parabéns, Mestre dos Códigos!</h1>
+                <p>Você completou todas as missões! Você aprendeu o que é Algoritmo, Programação e Testes. Isso é exatamente o que estudamos em <strong>ADS (Análise e Desenvolvimento de Sistemas)</strong>!</p>
+                <div class="final-card">
+                    <p><strong>O que é ADS?</strong><br>É o curso onde aprendemos a criar sites, aplicativos, jogos e sistemas que facilitam a vida das pessoas usando a tecnologia!</p>
+                </div>
+                <button class="btn-main" onclick="location.reload()">Jogar Novamente! 🔄</button>
+            </div>
+        </section>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
